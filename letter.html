@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <link rel="stylesheet" href="/css/styleletter.css">
+        <script src="/js/scriptletter.js" defer></script>
+        <title>Happy Valentine's Day</title>
+    </head>
+    <body>
+        <!--Letterbox--> 
+        <div id="lettercontainer">
+            <div id="letterbox">
+                <div class="envelope"></div>
+            </div>
+            <P id="tap">Tap to Open</P>
+            <!--Letter-->
+            <div id="letter">
+                <div class="content">
+                    <p>
+                    <h1>Happy Valentine's Day Sweetheart!!</h1>
+                    <h2>
+                        Honey, this is one of the messages I’ve created for you, 
+                        and I am certain it will touch your heart. 
+                        It has been almost two months since we began our journey together. 
+                        Whatever I have gone through with you, I will never regret it. 
+                        Every problem and every obstacle has only allowed us to know each other more deeply. 
+                        I don’t think I’ll ever find someone like you in anyone else.
+                        My heart feels tight just imagining a time where we are no longer connected,
+                        no longer sharing news, no longer encouraging one another. 
+                        Let my loyalty be my test. 
+                        I will ensure that you receive all the love and faithfulness I have to give. 
+                        I will reassure you that I will never look elsewhere. 
+                        I truly hope that we will return to the same home, enjoy meals together, and live under the same roof. 
+                        I feel those things are more worth thinking about and fighting for 
+                        than constantly fearing the loss of you.
+                        Honey, I wrote this as a way to express my feelings and how much I love you beyond just my words. 
+                        Aside from this, I will continue to immortalize our moments, 
+                        my feelings for you, and the story of our journey through every ability I have.
+                    </h2>
+                    <h3>From the depths of my being, <br> I love you with all my heart. <br> oooooooooooooo</h3>
+                    </p>
+                </div>
+            </div>
+            <button type="submit" class="nxt">Next</button>
+        </div>
+        <!--Mood picker-->
+        <div id="mood">
+            <div class="mood-title">How was your mood today?</div>
+            <div class="mood-grid">
+                <div class="mood-item" onclick="selectMood(this, 'Happy')">
+                    <img src="/photo/heppytingting.jpeg">
+                    <span class="mood-label">Happy</span>
+                </div>
+                <div class="mood-item" onclick="selectMood(this, 'Sad')">
+                    <img src="/photo/sadtingting.jpeg">
+                    <span class="mood-label">Sad</span>
+                </div>
+                <div class="mood-item" onclick="selectMood(this, 'Angry')">
+                    <img src="/photo/madtingting.jpeg">
+                    <span class="mood-label">Angry</span>
+                </div>
+                <div class="mood-item" onclick="selectMood(this, 'Tired')">
+                    <img src="/photo/tiredtingting.jpeg">
+                    <span class="mood-label">Tired</span>
+                </div>
+                <div class="mood-item" onclick="selectMood(this, 'Missing Me')">
+                    <img src="/photo/missingmetingting.jpeg">
+                    <span class="mood-label">Missing Me</span>
+                </div>
+                <div class="mood-item" onclick="selectMood(this, 'Overthinking')">
+                    <img src="/photo/overtingting.jpeg">
+                    <span class="mood-label">Overthinking</span>
+                </div>
+        </div>        
+        <!--How was your day?-->
+        <div id="howstoday">
+            <textarea id="storyInput" placeholder="Write what you feel today honey...(Indonesia aja ya sayang)"></textarea>
+            <button type="button" class="send-btn" onclick="sendWA()">Send to Me</button>        
+        </div>
+        <audio autoplay loop>
+            <source src="/aud/Perfection  Sempurna English Version - BBIBEEB - Bbibeeb.mp3" type="audio/mp3">
+        </audio>
+    </body>
+</html>

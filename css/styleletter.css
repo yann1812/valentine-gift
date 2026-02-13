@@ -1,0 +1,347 @@
+@font-face {
+    font-family: 'Myfont1';
+    src: url('/font/Lovedo.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Myfont2';
+    src: url('/font/Love.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Myfont3';
+    src: url('/font/Kissing\ Season.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #fff0f3 50%, #ffccd5 100%);
+    min-height: 100vh;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.heart {
+    position: fixed;
+    bottom: -50px; 
+    color: #ff4d6d; 
+    user-select: none;
+    pointer-events: none; 
+    z-index: 1;
+    opacity: 0.8;
+}
+
+@keyframes float { 
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; 
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg); 
+    }
+}
+
+#lettercontainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    perspective: 1000px;
+    z-index: 10;
+}
+
+#letterbox {
+    position: relative;
+    width: 280px;
+    height: 160px;
+    background-color: #ffccd5; 
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: transform 0.3s;
+    overflow: visible;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.envelope {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid #ff4d6d; 
+    transform-origin: top;
+    transition: transform 0.5s ease;
+    z-index: 6;
+}
+
+#tap {
+    position: absolute;
+    top: 65%;
+    font-family: 'Myfont3';
+    color: #d62828;
+    font-size: 24px;
+    margin: 0;
+    padding-top: 40px;
+    text-align: center;
+    width: 100%; 
+    z-index: 11;
+    pointer-events: none;     
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1); 
+        opacity: 1;             
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#letter {
+    position: fixed;
+    width: 250px;
+    height: 380px; 
+    background: #fff;
+    bottom: 10px; 
+    left: 50%;
+    transform: translateX(-50%) translateY(0); /* Posisi awal di dalam */
+    padding: 20px;    
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: none; 
+    flex-direction: column;
+    z-index: 2;
+    transition: transform 1s ease-out, opacity 0.5s;
+}
+
+#letter.slide-up {
+    display: flex;
+    transform: translateX(-50%) translateY(-400px); 
+    z-index: 20; 
+}
+
+#letter.active {
+    display: flex; /* Dipicu lewat JS */
+    animation: slideUp 0.8s ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(250px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.content {
+    max-height: 100%; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    padding-right: 10px;
+    flex: 1;
+    padding-right: 10px;
+    font-family: 'Georgia', serif; 
+    line-height: 1.6;
+    color: #333;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    font-family: Myfont2;
+    font-size: 12px;
+    color: #d62828;
+}
+
+
+h2 {
+    font-family: Myfont3;
+    font-size: 10px;
+}
+
+h3 {
+    font-family: Myfont2;
+    font-size: 9px;
+
+}
+
+.nxt {
+    display: none;
+    margin-top: 30px;      
+    margin-bottom: 0;  
+    padding: 12px 40px;
+    background: #e63946;
+    color: white;
+    font-family: 'Myfont3', sans-serif;
+    font-size: 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0;            
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+} 
+
+#mood {
+    display: none;
+}
+
+#howstoday {
+    display: none;
+}
+
+/* Animasi Fade Out untuk surat */
+.fade-out {
+    opacity: 0 !important;
+    transform: translateX(-50%) translateY(-20px) !important;
+    transition: all 0.5s ease-out !important;
+}
+
+/* Styling Mood Picker Grid */
+#mood {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+    z-index: 100;
+}
+
+.mood-title {
+    font-family: 'Myfont3';
+    font-size: 20px;
+    color: #d62828;
+    margin-bottom: 20px;
+}
+
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mood-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mood-item img {
+    width: 80px; /* Ukuran gambar kecil & rapi */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mood-item.selected img {
+    border-color: #ff4d6d;
+    box-shadow: 0 4px 10px rgba(255, 0, 60, 0.5);
+    transform: scale(1.1);
+}
+
+
+.mood-label {
+    font-family: 'Myfont3';
+    font-size: 13px;
+    margin-top: 5px;
+    color: #444;
+}
+
+/* Bagian Input & Tombol */
+#howstoday {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#storyInput {
+    width: 90%;
+    height: 15px;
+    padding: 12px;
+    border: 2px solid #ffccd5;
+    border-radius: 25px;
+    resize: none;
+    outline: none;
+    font-family: 'Myfont3';
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+#storyInput::-webkit-scrollbar {
+    display: none;
+}
+
+.send-btn {
+    background: #d62828;
+    color: white;
+    width: 80%;
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    font-family: 'Myfont3';
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Animasi Fade Out untuk surat */
+.fade-out {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px) !important;
+    transition: all 0.6s ease;
+}
